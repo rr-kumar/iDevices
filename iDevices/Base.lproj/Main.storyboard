@@ -36,22 +36,22 @@
         <!--Add iDevice-->
         <scene sceneID="Zbp-29-F2W">
             <objects>
-                <viewController id="8T7-H7-Lb6" sceneMemberID="viewController">
+                <viewController id="8T7-H7-Lb6" customClass="DeviceViewController" customModule="iDevices" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WZI-c1-Sca">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I0F-hf-Dxf">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="og.png" translatesAutoresizingMaskIntoConstraints="NO" id="I0F-hf-Dxf">
                                 <rect key="frame" x="47" y="114" width="280" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="cLB-BO-mjV"/>
                                     <constraint firstAttribute="height" constant="150" id="lO7-AV-g5n"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kgz-In-MFa">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name Your Apple Device" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kgz-In-MFa">
                                 <rect key="frame" x="48" y="304" width="280" height="30"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="light" enablesReturnKeyAutomatically="YES" textContentType="name"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OkU-Ao-eJh">
@@ -61,6 +61,9 @@
                                 <state key="normal" title="ADD">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="addButton:" destination="8T7-H7-Lb6" eventType="touchUpInside" id="Let-Dr-cXI"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -78,10 +81,22 @@
                     </view>
                     <navigationItem key="navigationItem" title="Add iDevice" id="0nC-he-cYM">
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="camera" id="V51-6k-GvO"/>
-                            <barButtonItem systemItem="organize" id="bjv-1e-Gpl"/>
+                            <barButtonItem systemItem="camera" id="V51-6k-GvO">
+                                <connections>
+                                    <action selector="cameraButton:" destination="8T7-H7-Lb6" id="Qms-tL-kxf"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="organize" id="bjv-1e-Gpl">
+                                <connections>
+                                    <action selector="galleryButton:" destination="8T7-H7-Lb6" id="dva-6g-AEp"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="deviceImageView" destination="I0F-hf-Dxf" id="Y6C-JD-iqf"/>
+                        <outlet property="deviceNameTextField" destination="kgz-In-MFa" id="5fo-x3-SmJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="39R-Gx-13V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -106,4 +121,7 @@
             <point key="canvasLocation" x="-663" y="152"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="og.png" width="1200" height="630"/>
+    </resources>
 </document>
