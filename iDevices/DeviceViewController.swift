@@ -41,6 +41,18 @@ class DeviceViewController: UIViewController,UIImagePickerControllerDelegate,UIN
         
     }
     @IBAction func addButton(_ sender: Any) {
+        
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        let iDevice = Device(context: context)
+        iDevice.title = deviceNameTextField.text
+        iDevice.image = UIImagePNGRepresentation(deviceImageView.image!)
+        
+        
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        
+        
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
