@@ -9,15 +9,27 @@
 import UIKit
 
 class DeviceViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
-
+    @IBOutlet weak var updateButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    
     @IBOutlet weak var deviceNameTextField: UITextField!
     @IBOutlet weak var deviceImageView: UIImageView!
     
     var imagePicker = UIImagePickerController()
+    var dowithImage : Device? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
         
         imagePicker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        if dowithImage != nil {
+            deviceImageView.image = UIImage(data: dowithImage!.image!)
+            deviceNameTextField.text = dowithImage?.title
+            updateButton.setTitle("Update", for:.normal)
+
+        }else{
+            deleteButton.isHidden = true
+        }
+        
 
        
     }
@@ -52,7 +64,7 @@ class DeviceViewController: UIViewController,UIImagePickerControllerDelegate,UIN
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
         
         
-        
+    
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

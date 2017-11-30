@@ -14,12 +14,14 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
     @IBOutlet weak var tableview: UITableView!
     
     var devices:[Device] = []
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        
         tableview.dataSource = self
         tableview.delegate = self
-    }
+            }
     
     override func viewWillAppear(_ animated: Bool) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -46,6 +48,16 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
             return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let mydevice = devices[indexPath.row]
+        performSegue(withIdentifier: "deviceSegue", sender: mydevice)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nextVC = segue.destination as! DeviceViewController
+        nextVC.dowithImage = sender as? Device
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

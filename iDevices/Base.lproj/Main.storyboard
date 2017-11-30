@@ -36,7 +36,7 @@
                     <navigationItem key="navigationItem" id="6FY-67-QxV">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="zl1-Om-NYk">
                             <connections>
-                                <segue destination="8T7-H7-Lb6" kind="show" id="Qek-85-2VH"/>
+                                <segue destination="8T7-H7-Lb6" kind="show" identifier="deviceSegue" id="Qek-85-2VH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -80,6 +80,17 @@
                                     <action selector="addButton:" destination="8T7-H7-Lb6" eventType="touchUpInside" id="Let-Dr-cXI"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Keh-k8-x0w">
+                                <rect key="frame" x="48" y="427" width="280" height="33"/>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="DELETE">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addButton:" destination="8T7-H7-Lb6" eventType="touchUpInside" id="0IC-p2-OtR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -87,8 +98,11 @@
                             <constraint firstItem="I0F-hf-Dxf" firstAttribute="top" secondItem="PFp-Rk-ibw" secondAttribute="top" constant="50" id="BHO-Nf-uZM"/>
                             <constraint firstItem="I0F-hf-Dxf" firstAttribute="centerX" secondItem="WZI-c1-Sca" secondAttribute="centerX" id="J9e-Sw-b9P"/>
                             <constraint firstItem="kgz-In-MFa" firstAttribute="centerX" secondItem="WZI-c1-Sca" secondAttribute="centerX" id="QhD-li-HoN"/>
+                            <constraint firstItem="Keh-k8-x0w" firstAttribute="centerX" secondItem="WZI-c1-Sca" secondAttribute="centerX" id="SZJ-Zo-r3r"/>
                             <constraint firstItem="OkU-Ao-eJh" firstAttribute="top" secondItem="kgz-In-MFa" secondAttribute="bottom" constant="40" id="SbT-7j-rvj"/>
                             <constraint firstItem="OkU-Ao-eJh" firstAttribute="width" secondItem="kgz-In-MFa" secondAttribute="width" id="YpQ-2h-oYC"/>
+                            <constraint firstItem="Keh-k8-x0w" firstAttribute="width" secondItem="OkU-Ao-eJh" secondAttribute="width" id="h1L-Xo-icU"/>
+                            <constraint firstItem="Keh-k8-x0w" firstAttribute="top" secondItem="OkU-Ao-eJh" secondAttribute="bottom" constant="20" id="hns-KC-Whz"/>
                             <constraint firstItem="OkU-Ao-eJh" firstAttribute="centerX" secondItem="I0F-hf-Dxf" secondAttribute="centerX" id="i4l-qg-KlC"/>
                             <constraint firstItem="kgz-In-MFa" firstAttribute="top" secondItem="I0F-hf-Dxf" secondAttribute="bottom" constant="40" id="lHj-sD-OGu"/>
                         </constraints>
@@ -109,8 +123,10 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="deleteButton" destination="Keh-k8-x0w" id="5xZ-aP-iEO"/>
                         <outlet property="deviceImageView" destination="I0F-hf-Dxf" id="Y6C-JD-iqf"/>
                         <outlet property="deviceNameTextField" destination="kgz-In-MFa" id="5fo-x3-SmJ"/>
+                        <outlet property="updateButton" destination="OkU-Ao-eJh" id="54x-mv-SUg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="39R-Gx-13V" userLabel="First Responder" sceneMemberID="firstResponder"/>
