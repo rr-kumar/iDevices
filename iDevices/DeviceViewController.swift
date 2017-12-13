@@ -16,14 +16,14 @@ class DeviceViewController: UIViewController,UIImagePickerControllerDelegate,UIN
     @IBOutlet weak var deviceImageView: UIImageView!
     
     var imagePicker = UIImagePickerController()
-    var dowithImage : Device? = nil
+    var iDevice : Device? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
         
         imagePicker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
-        if dowithImage != nil {
-            deviceImageView.image = UIImage(data: dowithImage!.image!)
-            deviceNameTextField.text = dowithImage?.title
+        if iDevice != nil {
+            deviceImageView.image = UIImage(data: iDevice!.image!)
+            deviceNameTextField.text = iDevice?.title
             updateButton.setTitle("Update", for:.normal)
 
         }else{
@@ -34,7 +34,9 @@ class DeviceViewController: UIViewController,UIImagePickerControllerDelegate,UIN
        
     }
     @IBAction func cameraButton(_ sender: Any) {
-       
+        imagePicker.sourceType = .camera
+        
+        present(imagePicker, animated: true, completion: nil)
     }
     
     @IBAction func galleryButton(_ sender: Any) {
@@ -54,17 +56,35 @@ class DeviceViewController: UIViewController,UIImagePickerControllerDelegate,UIN
     }
     @IBAction func addButton(_ sender: Any) {
         
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+     if iDevice != nil{
+        iDevice!.title = deviceNameTextField.text
+        iDevice!.image = UIImagePNGRepresentation(deviceImageView.image!)
         
-        let iDevice = Device(context: context)
-        iDevice.title = deviceNameTextField.text
-        iDevice.image = UIImagePNGRepresentation(deviceImageView.image!)
+            
+         } else {
+            
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            
+            let iDevice = Device(context: context)
+            iDevice.title = deviceNameTextField.text
+            iDevice.image = UIImagePNGRepresentation(deviceImageView.image!)
+        }
+        
+       
         
         
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        navigationController?.popViewController(animated: true)
         
         
     
+    }
+    @IBAction func deleteButton(_ sender: Any) {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        context.delete(iDevice!)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        navigationController?.popViewController(animated: true)
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

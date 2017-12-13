@@ -56,7 +56,7 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let nextVC = segue.destination as! DeviceViewController
-        nextVC.dowithImage = sender as? Device
+        nextVC.iDevice = sender as? Device
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
